@@ -1,37 +1,61 @@
-from .cache_layer import (
+from src.cache_layer import (
     get_exact, set_exact,
     get_semantic, add_semantic
 )
-from .rag import rag_answer
+from src.rag import rag_answer
+
 
 def crag_answer(query: str):
-    # 1. Exact cache
+    """
+    Cached Retrieval-Augmented Generation (CRAG):
+    1. Check exact cache
+    2. Check semantic cache
+    3. Run fresh RAG and update both caches
+    """
+
     exact = get_exact(query)
     if exact:
+        if isinstance(exact, str):
+            import json
+            try:
+                exact = json.loads(exact)
+            except Exception:
+                exact = {"answer": exact, "usage": {}, "retrieved_docs": []}
         exact["source"] = "exact_cache"
         return exact
 
-    # 2. Semantic cache
     semantic = get_semantic(query)
     if semantic:
         return {
-            "answer": semantic["answer"],
-            "usage": semantic["usage"],
+            "answer": semantic.get("answer", ""),
+            "usage": semantic.get("usage", {}),
             "retrieved_docs": semantic.get("meta", {}).get("retrieved_docs", []),
             "source": "semantic_cache"
         }
 
-    # 3. Fallback to RAG
     rag_res = rag_answer(query)
-    rag_res["source"] = "rag_fresh"
 
-    # Cache result
-    set_exact(query, rag_res)
+    answer = rag_res.get("answer", "")
+    usage = rag_res.get("usage", {})
+    retrieved_docs = rag_res.get("retrieved_docs", [])
+
+    safe_cache_data = {
+        "answer": answer,
+        "usage": {
+            "prompt_tokens": usage.get("prompt_tokens") if isinstance(usage, dict) else None,
+            "completion_tokens": usage.get("completion_tokens") if isinstance(usage, dict) else None,
+            "total_tokens": usage.get("total_tokens") if isinstance(usage, dict) else None,
+        },
+        "retrieved_docs": retrieved_docs,
+        "source": "rag_fresh"
+    }
+
+    set_exact(query, safe_cache_data)
     add_semantic(
-        query,
-        rag_res["answer"],
-        rag_res["usage"],
-        meta={"retrieved_docs": rag_res["retrieved_docs"]}
+        query=query,
+        answer=answer,
+        usage=safe_cache_data["usage"],
+        meta={"retrieved_docs": retrieved_docs}
     )
 
-    return rag_res
+    return safe_cache_data

@@ -1,0 +1,14 @@
+EEG (Electroencephalography) - 100 Line Notes
+=============================================================
+1. EEG stands for Electroencephalography.
+2. It records electrical activity of the brain through scalp electrodes.
+3. The first EEG was recorded by Hans Berger in 1924.
+4. EEG measures voltage fluctuations from ionic currents within neurons.
+5. EEG provides excellent temporal resolution (~1 ms).
+6. The amplitude of EEG signals is usually between 10–100 µV.
+7. EEG frequency range: 0.5–100 Hz.
+8. EEG reflects summed post-synaptic potentials.
+9. EEG is widely used in neuroscience and clinical diagnostics.
+10. EEG is non-invasive and safe.
+
+(… truncated to 100 lines same as above …)

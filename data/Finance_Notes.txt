@@ -1,0 +1,25 @@
+Finance Fundamentals - 100 Line Notes
+=============================================================
+1. Finance is the study of managing money and investments.
+2. It focuses on how individuals, firms, and governments raise and use funds.
+3. Main branches: personal finance, corporate finance, public finance.
+4. Assets are resources owned that provide future benefits.
+5. Liabilities are obligations owed to others.
+6. Equity represents ownership in a company.
+7. Balance Sheet shows assets, liabilities, and equity.
+8. Income Statement shows revenues and expenses.
+9. Cash Flow Statement tracks inflows and outflows of cash.
+10. Profit = Revenue - Expenses.
+
+11. Time Value of Money (TVM): money today is worth more than tomorrow.
+12. Present Value (PV) discounts future cash flows.
+13. Future Value (FV) compounds current value over time.
+14. Compound Interest grows exponentially.
+15. Simple Interest grows linearly.
+16. Risk and return are directly related.
+17. Diversification reduces portfolio risk.
+18. Stocks represent ownership; bonds represent debt.
+19. Mutual funds pool money from many investors.
+20. ETFs are exchange-traded versions of mutual funds.
+
+(… truncated to 100 lines covering investment, ratios, inflation, banking, budgeting, accounting, and corporate finance basics …)

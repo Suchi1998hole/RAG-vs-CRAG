@@ -1,13 +1,13 @@
 import os
 from tqdm import tqdm
+import pandas as pd
 
-from .rag import rag_answer
-from .crag import crag_answer
-from .metrics import measure, to_dataframe
-from .utils.logger import logger
+from src.rag import rag_answer
+from src.crag import crag_answer
+from src.metrics import measure, to_dataframe
+from src.utils.logger import logger
 
 QUERIES = [
-    # design: some unique, some repeating to show cache improvements
     "Explain the role of alpha band in EEG-based motor imagery.",
     "Explain the role of alpha band in EEG-based motor imagery.",
     "What is the difference between delta, theta, alpha, beta, and gamma bands?",
@@ -35,7 +35,7 @@ def run_benchmark():
         m["mode"] = "RAG"
         rag_records.append(m)
 
-    logger.info("Running CRAG (with cache)...")
+    logger.info("Running CAG (with cache)...")
     for q in tqdm(QUERIES, desc="CRAG"):
         _, m = measure(crag_answer, q)
         m["query"] = q
@@ -45,11 +45,12 @@ def run_benchmark():
     df_rag = to_dataframe(rag_records)
     df_crag = to_dataframe(crag_records)
 
-    df = (
-        df_rag
-        .reset_index(drop=True)
-        .append(df_crag.reset_index(drop=True), ignore_index=True)
+
+    df = pd.concat(
+        [df_rag, df_crag.reset_index(drop=True)],
+        ignore_index=True
     )
+
 
     out_path = os.path.join(OUT_DIR, "rag_vs_crag_metrics.csv")
     df.to_csv(out_path, index=False)

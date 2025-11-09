@@ -1,0 +1,25 @@
+AWS (Amazon Web Services) - 100 Line Notes
+=============================================================
+1. AWS is Amazon’s cloud computing platform.
+2. It provides on-demand IT resources over the internet.
+3. AWS was launched in 2006.
+4. Core services include EC2, S3, RDS, Lambda, and VPC.
+5. EC2 provides virtual servers known as instances.
+6. S3 is used for object storage with 99.999999999% durability.
+7. RDS offers managed relational databases (MySQL, PostgreSQL, etc.).
+8. IAM controls access and permissions securely.
+9. Lambda enables serverless computing.
+10. CloudWatch monitors resources and applications.
+
+11. Route 53 provides domain name services.
+12. CloudFormation automates infrastructure as code.
+13. VPC allows creating isolated private networks.
+14. Security Groups act as virtual firewalls.
+15. Elastic Load Balancer distributes traffic across servers.
+16. Auto Scaling adjusts compute capacity automatically.
+17. EBS provides persistent block storage.
+18. CloudFront delivers content globally (CDN).
+19. SQS handles message queuing between microservices.
+20. SNS enables push notifications.
+
+(… truncated to 100 lines covering EC2, S3, IAM, RDS, CloudWatch, KMS, Glue, Athena, DynamoDB, etc. …)
