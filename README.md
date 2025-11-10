@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🧠 RAG vs CRAG Benchmark: Cached Retrieval-Augmented Generation using Weaviate + OpenAI
 
 This project compares **Retrieval-Augmented Generation (RAG)** with **Cached Retrieval-Augmented Generation (CRAG)** by measuring **latency, computational load, and token usage** during text-generation tasks.  
@@ -36,4 +35,3 @@ It demonstrates how caching previously retrieved or generated results significan
 
 ## 🧩 Architecture
 
->>>>>>> 24f43052dd6dc766f82a72a2fa2cc000adce2cc6
